@@ -48,10 +48,13 @@ char*   ft_itoa(int n)
 int    number(int nb)
 {
     long int    n;
+    int len;
 
     n = nb;
+    len = 0;
     if (n < 0)
     {
+        len++;
         ft_putchar('-');
         n = -n;
     }
@@ -62,5 +65,5 @@ int    number(int nb)
         number(n / 10);
         number(n % 10);
     }
-    return (ft_strlen(ft_itoa(n)));
+    return (len += ft_strlen(ft_itoa(n)));
 }

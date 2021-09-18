@@ -4,14 +4,14 @@
 #include <string.h>
 #include <stdint.h>
 
-static void ft_write(char format, const void *value, int *length)
+void ft_write(char format, const void *value, int *length)
 {
-    if (format == 'i' || format == 'd')
-        *length += number((long)value);
+	if (format == 'i' || format == 'd')
+    	*length += number((long)value);
     else if (format == 'u')
         *length += number((long)value);
     else if (format == 'p')
-        *length += ft_base((long)value, "023456789abcdef");
+        *length += write_ptr((void*)value);
     else if (format == 's')
         *length += ft_putstr((const char*)value);
     else if (format == 'x')
@@ -29,9 +29,9 @@ static void ft_write(char format, const void *value, int *length)
 
 int ft_printf(const char *format, ...)
 {
-    va_list args;
-    int len;
-    void* str;
+    va_list	args;
+    int		len;
+    void*	str;
 
     va_start(args, format);
     len = 0; 
@@ -54,11 +54,3 @@ int ft_printf(const char *format, ...)
     va_end(args);
     return len;       
 }
-
-// int main()
-// {
-//     int a = 170;    
-//     ft_printf(" %d\n", ft_printf("%s %d ", "mehdi", -a));
-//     printf(" %d\n", printf("%s %d ", "mehdi", -a));
-//     ft_printf("%%\n");
-// }
