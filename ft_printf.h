@@ -2,12 +2,13 @@
 #define FT_PRINTF_H
 
 #include <unistd.h>
+#include <stdlib.h>
 
-size_t ft_strlen (const char *s);
-void    ft_putchar(char c);
-void    ft_putnbr(int nb);
-void    ft_putnbr_base(int nb, char* base);
-void    ft_putstr(const char* str);
-
+size_t  ft_strlen (const char *s);
+int     ft_putchar(char c);
+int     number(int nb);
+int     ft_base(int nb, char* base);
+int     ft_putstr(const char* str);
+int     number_length(long int nb, char* base);
 
 #endif
