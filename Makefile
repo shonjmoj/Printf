@@ -9,7 +9,6 @@ SRC = ft_printf.c \
 		ft_printf_utils2.c \
 		ft_printf_utils3.c
 
-
 OBJ = ${SRC:.c=.o}
 
 all : $(NAME)
@@ -24,6 +23,6 @@ clean :
 	rm -rf $(OBJ)
 
 fclean : clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) a.out
 
 re : fclean all

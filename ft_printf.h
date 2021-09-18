@@ -14,6 +14,8 @@ int     ft_putstr(const char* str);
 int     number_length(long int nb, char* base);
 int     write_ptr(void* ptr);
 void    ft_write(char format, const void *value, int *length);
-int ft_printf(const char *format, ...);
+int     ft_printf(const char *format, ...);
+int     unsigned_number(unsigned int nb);
+char*   ft_itoa(long n);
 
 #endif

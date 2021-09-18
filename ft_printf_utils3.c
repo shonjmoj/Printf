@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 int    number_length(long int nb, char* base)
 {
@@ -41,4 +42,21 @@ int    write_ptr(void* ptr)
     i = (intptr_t)ptr;
     write(1, "0x", 2);
     return(ft_base(i,"0123456789abcdef") + 2);
+}
+
+int unsigned_number(unsigned int nb)
+{
+    int len;
+    
+    len = 0;
+    if (nb <= 9)
+    {
+        ft_putchar(nb + 48);
+    }
+    else
+    {
+        unsigned_number(nb / 10);
+        unsigned_number(nb % 10);
+    }
+    return (len + ft_strlen(ft_itoa(nb)));
 }

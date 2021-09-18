@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 
 
-static int     ft_len_nb(int nb)
+static int     ft_len_nb(long nb)
 {
     int i = 0;
     if (nb == 0)
@@ -19,7 +19,7 @@ static int     ft_len_nb(int nb)
     return i;
 }
 
-char*   ft_itoa(int n)
+char*   ft_itoa(long n)
 {
     int len = ft_len_nb(n);
     char* str;

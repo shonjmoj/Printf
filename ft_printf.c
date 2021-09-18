@@ -9,7 +9,7 @@ void ft_write(char format, const void *value, int *length)
 	if (format == 'i' || format == 'd')
     	*length += number((long)value);
     else if (format == 'u')
-        *length += number((long)value);
+        *length += unsigned_number((long)value);
     else if (format == 'p')
         *length += write_ptr((void*)value);
     else if (format == 's')
