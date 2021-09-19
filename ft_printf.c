@@ -1,10 +1,8 @@
 #include "ft_printf.h"
-#include <stdio.h>
 #include <stdarg.h>
-#include <string.h>
 #include <stdint.h>
 
-void ft_write(char format, const void *value, int *length)
+void    ft_write(char format, const void *value, int *length)
 {
 	if (format == 'i' || format == 'd')
     	*length += number((long)value);
@@ -29,9 +27,9 @@ void ft_write(char format, const void *value, int *length)
 
 int ft_printf(const char *format, ...)
 {
-    va_list	args;
-    int		len;
-    void*	str;
+    va_list args;
+    int     len;
+    void*   str;
 
     va_start(args, format);
     len = 0; 
@@ -52,5 +50,5 @@ int ft_printf(const char *format, ...)
         format++;
     }
     va_end(args);
-    return len;       
+    return (len);       
 }

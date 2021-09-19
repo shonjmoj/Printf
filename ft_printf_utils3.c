@@ -1,7 +1,6 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
-int    number_length(long int nb, char* base)
+int number_length(long int nb, char* base)
 {
     int i;
 
@@ -11,10 +10,10 @@ int    number_length(long int nb, char* base)
         i++;
         nb /= ft_strlen(base);
     }
-    return i;
+    return(i);
 }
 
-int    ft_base(long int n, char* base)
+int ft_base(long int n, char* base)
 {
     int i;
 
@@ -32,12 +31,12 @@ int    ft_base(long int n, char* base)
         ft_base(n / ft_strlen(base), base);
         ft_base(n % ft_strlen(base), base);
     }
-    return (i += number_length(n, base));
+    return(i += number_length(n, base));
 }
 
-int    write_ptr(void* ptr)
+int write_ptr(void* ptr)
 {
-    intptr_t i;
+    intptr_t    i;
 
     i = (intptr_t)ptr;
     write(1, "0x", 2);
@@ -58,5 +57,5 @@ int unsigned_number(unsigned int nb)
         unsigned_number(nb / 10);
         unsigned_number(nb % 10);
     }
-    return (len + ft_strlen(ft_itoa(nb)));
+    return(len + ft_strlen(ft_itoa(nb)));
 }

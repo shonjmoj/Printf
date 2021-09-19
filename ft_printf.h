@@ -1,10 +1,8 @@
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-
+#ifndef     FT_PRINTF_H
+# define    FT_PRINTF_H
 
 #include <unistd.h>
 #include <stdlib.h>
-
 
 size_t  ft_strlen (const char *s);
 int     ft_putchar(char c);

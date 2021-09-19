@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include <stdint.h>
 
-size_t ft_strlen (const char *s)
+size_t  ft_strlen(const char *s)
 {
     unsigned int i;
 
@@ -11,13 +11,13 @@ size_t ft_strlen (const char *s)
     return (i);
 }
 
-int    ft_putchar(char c)
+int ft_putchar(char c)
 {
     write(1, &c, 1);
-    return 1;
+    return(1);
 }
 
-int    ft_putstr(const char* str)
+int ft_putstr(const char* str)
 {
     int i;
 
@@ -27,5 +27,5 @@ int    ft_putstr(const char* str)
         write(1, &str[i], 1);
         i++;
     }
-    return i;
+    return(i);
 }

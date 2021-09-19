@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 
 
-static int     ft_len_nb(long nb)
+static int  ft_len_nb(long nb)
 {
     int i = 0;
     if (nb == 0)
@@ -16,16 +16,17 @@ static int     ft_len_nb(long nb)
         nb /= 10;
         i++;
     }
-    return i;
+    return (i);
 }
 
 char*   ft_itoa(long n)
 {
-    int len = ft_len_nb(n);
+    int len;
     char* str;
     long nb;
     
     nb = n;
+    len = ft_len_nb(n);
     str = malloc(sizeof(char) * len + 1);
     if (!str)
         return NULL;
@@ -42,13 +43,13 @@ char*   ft_itoa(long n)
         str[len--] = (nb % 10) + '0';
         nb = nb / 10;
     }
-    return str;
+    return (str);
 }
 
-int    number(int nb)
+int number(int nb)
 {
     long int    n;
-    int len;
+    int         len;
 
     n = nb;
     len = 0;
