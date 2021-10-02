@@ -2,52 +2,49 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-void    ft_write(char format, void *value, int *length)
+void    ft_write(char format, void *value)
 {
 	if (format == 'i' || format == 'd')
-		*length += number((long)value);
+		number((long)value);
     else if (format == 'u')
-        *length += unsigned_number((long)value);
+        unsigned_number((long)value);
     else if (format == 'p')
-        *length += write_ptr((void*)value);
+        write_ptr(value);
     else if (format == 's')
-        *length += ft_putstr((char*)value);
+        ft_putstr((char*)value);
     else if (format == 'x')
-        *length += ft_base((long)value, "0123456789abcdef");
+        ft_base(*(unsigned int*)value, 'x');
     else if (format == 'X')
-        *length += ft_base((long)value, "0123456789ABCDEF");
+        ft_base(*(unsigned int*)value, 'X');
     else if (format == 'c')
-		*length += write(1, &value, 1);
+	{
+        write(1, &value, 1);
+        g_count++;
+    }
     else if (format == '%')
-        *length += ft_putchar('%');
+        ft_putchar('%');
 }
 
 int ft_printf(const char *format, ...)
 {
+    g_count = 0;
     va_list args;
-    int     len;
     void*   str;
 
     va_start(args, format);
-    len = 0; 
     while (*format) 
     {
         if (*format == '%')
         {
             format++;
             if (*format != '%')
-            {
                 str = va_arg(args, void*);
-            }
-            ft_write(*format, str, &len);
+            ft_write(*format, str);
         }
         else
-        {
-            len++;
             ft_putchar(*format);
-        }
         format++;
     }
     va_end(args);
-    return (len);       
+    return (g_count);       
 }

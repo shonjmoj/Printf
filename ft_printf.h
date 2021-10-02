@@ -6,16 +6,17 @@
 #include <stdio.h>
 #include <string.h>
 
+int     g_count;
+
 size_t  ft_strlen (const char *s);
-int     ft_putchar(char c);
-int     number(int nb);
-int     ft_base(long int nb, char* base);
-int     ft_putstr(char* str);
-int     number_length(long int nb, char* base);
-int     write_ptr(void* ptr);
-void    ft_write(char format, void *value, int *length);
+void    ft_putchar(char c);
+void    number(int nb);
+void    ft_base(unsigned int nb, char flag);
+void    ft_putstr(char* str);
+int     number_length(int nb, char* base);
+void    write_ptr(void* ptr);
+void    ft_write(char format, void *value);
 int     ft_printf(const char *format, ...);
-int     unsigned_number(unsigned int nb);
-char*   ft_itoa(long n);
+void    unsigned_number(unsigned int nb);
 
 #endif

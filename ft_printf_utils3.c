@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int number_length(long int nb, char* base)
+int number_length(int nb, char* base)
 {
     int i;
 
@@ -13,28 +13,33 @@ int number_length(long int nb, char* base)
     return(i);
 }
 
-int ft_base(long int n, char* base)
+void ft_base(unsigned int nb, char flag)
 {
+    char *base = "0123456789abcdef";
+    char *base_maj = "0123456789ABCDEF";
+    int nbs[12];
     int i;
 
     i = 0;
-    if (n < 0)
+    while (nb)
     {
+        nbs[i] = nb % 16;
         i++;
-        ft_putchar('-');
-        n = -n;
+        nb = nb / 16;
     }
-    if (n < (long)ft_strlen(base))
-        ft_putchar(base[n]);
-    else
+    if (flag == 'x')
     {
-        ft_base(n / ft_strlen(base), base);
-        ft_base(n % ft_strlen(base), base);
+        while (--i >= 0)
+            ft_putchar(base[nbs[i]]);
     }
-    return(i += number_length(n, base));
-}
+    else if (flag == 'X')
+    {
+        while (--i >= 0)
+            ft_putchar(base_maj[nbs[i]]);
+    }
+} 
 
-int write_ptr(void* ptr)
+void    write_ptr(void* ptr)
 {
     intptr_t    i;
 
@@ -42,28 +47,23 @@ int write_ptr(void* ptr)
     if (i == 0)
     {
         write(1, "(nil)", 5);
-        return (5);
+        g_count += 5;
     }
     else
     {
         write(1, "0x", 2);
-        return(ft_base(i,"0123456789abcdef") + 2);
+        ft_base(i, 'x');
+        g_count += (number_length(i, "0123456789abcdef") + 2);
     }
 }
 
-int unsigned_number(unsigned int nb)
+void    unsigned_number(unsigned int nb)
 {
-    int len;
-    
-    len = 0;
     if (nb <= 9)
-    {
         ft_putchar(nb + 48);
-    }
     else
     {
         unsigned_number(nb / 10);
         unsigned_number(nb % 10);
     }
-    return(len + ft_strlen(ft_itoa(nb)));
 }

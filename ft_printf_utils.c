@@ -3,34 +3,39 @@
 
 size_t  ft_strlen(const char *s)
 {
-    unsigned int i;
+    size_t  i;
 
     i = 0;
     while(s[i])
+    {
         i++;
+        //g_count++;
+    }
     return (i);
 }
 
-int ft_putchar(char c)
+void ft_putchar(char c)
 {
     write(1, &c, 1);
-    return(1);
+    g_count++;
 }
 
-int ft_putstr(char* str)
+void ft_putstr(char* str)
 {
     int i;
 
     i = 0;
     if (!str)
+    {
         write(1, "(null)", 6);
+        g_count += 6;
+    }
     else
     {
         while (str[i])
         {
-            write(1, &str[i], 1);
+            ft_putchar(str[i]);
             i++;
         }
     }
-    return(i);
 }
