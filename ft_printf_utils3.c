@@ -39,8 +39,16 @@ int write_ptr(void* ptr)
     intptr_t    i;
 
     i = (intptr_t)ptr;
-    write(1, "0x", 2);
-    return(ft_base(i,"0123456789abcdef") + 2);
+    if (i == 0)
+    {
+        write(1, "(nil)", 5);
+        return (5);
+    }
+    else
+    {
+        write(1, "0x", 2);
+        return(ft_base(i,"0123456789abcdef") + 2);
+    }
 }
 
 int unsigned_number(unsigned int nb)

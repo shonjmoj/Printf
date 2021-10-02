@@ -17,15 +17,20 @@ int ft_putchar(char c)
     return(1);
 }
 
-int ft_putstr(const char* str)
+int ft_putstr(char* str)
 {
     int i;
 
     i = 0;
-    while (str[i])
+    if (!str)
+        write(1, "(null)", 6);
+    else
     {
-        write(1, &str[i], 1);
-        i++;
+        while (str[i])
+        {
+            write(1, &str[i], 1);
+            i++;
+        }
     }
     return(i);
 }

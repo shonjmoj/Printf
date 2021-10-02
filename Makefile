@@ -7,7 +7,8 @@ NAME = ft_printf.a
 SRC = ft_printf.c \
 		ft_printf_utils.c \
 		ft_printf_utils2.c \
-		ft_printf_utils3.c
+		ft_printf_utils3.c \
+		ft_printf_utils4.c 
 
 OBJ = ${SRC:.c=.o}
 
