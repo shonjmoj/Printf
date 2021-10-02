@@ -13,7 +13,7 @@ int number_length(int nb, char* base)
     return(i);
 }
 
-void ft_base(unsigned int nb, char flag)
+void ft_base(unsigned long int nb, char flag)
 {
     char hex[] = "0123456789abcdef";
     char HEX[] = "0123456789ABCDEF";
@@ -29,12 +29,9 @@ void ft_base(unsigned int nb, char flag)
     
 } 
 
-void    write_ptr(void* ptr)
+void    write_ptr(unsigned long int nb)
 {
-    intptr_t    i;
-
-    i = (intptr_t)ptr;
-    if (i == 0)
+    if (nb == 0)
     {
         write(1, "(nil)", 5);
         g_count += 5;
@@ -42,8 +39,8 @@ void    write_ptr(void* ptr)
     else
     {
         write(1, "0x", 2);
-        ft_base(i, 'x');
-        g_count += (number_length(i, "0123456789abcdef") + 2);
+        ft_base(nb, 'x');
+        g_count += (number_length(nb, "0123456789abcdef") + 2);
     }
 }
 
