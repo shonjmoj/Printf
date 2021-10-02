@@ -2,35 +2,29 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-void    ft_write(char format, void *value)
+void    ft_write(char format, va_list args)
 {
 	if (format == 'i' || format == 'd')
-		number((long)value);
+		number(va_arg(args, int));
     else if (format == 'u')
-        unsigned_number((long)value);
+        unsigned_number(va_arg(args, unsigned int));
     else if (format == 'p')
-        write_ptr(value);
+        write_ptr(va_arg(args, void*));
     else if (format == 's')
-        ft_putstr((char*)value);
+        ft_putstr(va_arg(args, char*));
     else if (format == 'x')
-        ft_base(*(unsigned int*)value, 'x');
+        ft_base(va_arg(args, unsigned int), 'x');
     else if (format == 'X')
-        ft_base(*(unsigned int*)value, 'X');
+        ft_base(va_arg(args, unsigned int), 'X');
     else if (format == 'c')
-	{
-        write(1, &value, 1);
-        g_count++;
-    }
-    else if (format == '%')
-        ft_putchar('%');
+        ft_putchar(va_arg(args, int));
 }
 
 int ft_printf(const char *format, ...)
 {
-    g_count = 0;
     va_list args;
-    void*   str;
 
+    g_count = 0;
     va_start(args, format);
     while (*format) 
     {
@@ -38,8 +32,9 @@ int ft_printf(const char *format, ...)
         {
             format++;
             if (*format != '%')
-                str = va_arg(args, void*);
-            ft_write(*format, str);
+                ft_write(*format, args);
+            else if (*format == '%')
+                ft_putchar('%');
         }
         else
             ft_putchar(*format);

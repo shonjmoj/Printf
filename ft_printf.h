@@ -15,8 +15,9 @@ void    ft_base(unsigned int nb, char flag);
 void    ft_putstr(char* str);
 int     number_length(int nb, char* base);
 void    write_ptr(void* ptr);
-void    ft_write(char format, void *value);
+void    ft_write(char format, va_list args);
 int     ft_printf(const char *format, ...);
 void    unsigned_number(unsigned int nb);
+int     ft_atoi_base(char *str, int base);
 
 #endif

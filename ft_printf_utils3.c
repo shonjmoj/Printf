@@ -15,28 +15,18 @@ int number_length(int nb, char* base)
 
 void ft_base(unsigned int nb, char flag)
 {
-    char *base = "0123456789abcdef";
-    char *base_maj = "0123456789ABCDEF";
-    int nbs[12];
-    int i;
-
-    i = 0;
-    while (nb)
+    char hex[] = "0123456789abcdef";
+    char HEX[] = "0123456789ABCDEF";
+    if (nb >= 16)
     {
-        nbs[i] = nb % 16;
-        i++;
-        nb = nb / 16;
-    }
-    if (flag == 'x')
-    {
-        while (--i >= 0)
-            ft_putchar(base[nbs[i]]);
+        ft_base(nb / 16, flag);
+        ft_base(nb % 16, flag);
     }
     else if (flag == 'X')
-    {
-        while (--i >= 0)
-            ft_putchar(base_maj[nbs[i]]);
-    }
+        ft_putchar(HEX[nb]);
+    else
+        ft_putchar(hex[nb]);
+    
 } 
 
 void    write_ptr(void* ptr)
