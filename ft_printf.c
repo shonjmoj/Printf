@@ -13,9 +13,9 @@ void    ft_write(char format, va_list args)
     else if (format == 's')
         ft_putstr(va_arg(args, char*));
     else if (format == 'x')
-        ft_base(va_arg(args, unsigned long int), 'x');
+        ft_base(va_arg(args, long int), 'x');
     else if (format == 'X')
-        ft_base(va_arg(args, unsigned long int), 'X');
+        ft_base(va_arg(args, long int), 'X');
     else if (format == 'c')
         ft_putchar(va_arg(args, int));
 }

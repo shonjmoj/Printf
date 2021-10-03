@@ -1,18 +1,5 @@
 #include "ft_printf.h"
 
-int number_length(int nb, char* base)
-{
-    int i;
-
-    i = 0;
-    while (nb > 0)
-    {
-        i++;
-        nb /= ft_strlen(base);
-    }
-    return(i);
-}
-
 void ft_base(unsigned long int nb, char flag)
 {
     char hex[] = "0123456789abcdef";
@@ -40,7 +27,7 @@ void    write_ptr(unsigned long int nb)
     {
         write(1, "0x", 2);
         ft_base(nb, 'x');
-        g_count += (number_length(nb, "0123456789abcdef") + 2);
+        g_count += 2;
     }
 }
 
