@@ -1,20 +1,43 @@
 #include "ft_printf.h"
 
-void number(int nb)
+void ft_base(unsigned long int nb, char flag)
 {
-    long int    n;
+    char* hex;
+    char* HEX;
 
-    n = nb;
-    if (n < 0)
+    
+    hex = "0123456789abcdef";
+    HEX = "0123456789ABCDEF";
+    if (nb >= 16)
     {
-        ft_putchar('-');
-        n = -n;
+        ft_base(nb / 16, flag);
+        ft_base(nb % 16, flag);
     }
-    if (n <= 9)
-        ft_putchar(n + 48);
+    else if (flag == 'X')
+        ft_putchar(HEX[nb]);
+    else if (flag == 'x')
+        ft_putchar(hex[nb]);  
+} 
+
+void    write_ptr(unsigned long int nb)
+{
+    if (nb == 0)
+        ft_putstr("(nil)");
     else
     {
-        number(n / 10);
-        number(n % 10);
+        ft_putchar('0');
+        ft_putchar('x');
+        ft_base(nb, 'x');
+    }
+}
+
+void    unsigned_number(unsigned int nb)
+{
+    if (nb <= 9)
+        ft_putchar(nb + 48);
+    else
+    {
+        unsigned_number(nb / 10);
+        unsigned_number(nb % 10);
     }
 }

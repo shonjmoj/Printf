@@ -1,11 +1,9 @@
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <stdint.h>
 
 void    ft_write(char format, va_list args)
 {
 	if (format == 'i' || format == 'd')
-		number(va_arg(args, int));
+		ft_putnbr(va_arg(args, int));
     else if (format == 'u')
         unsigned_number(va_arg(args, unsigned int));
     else if (format == 'p')
@@ -13,9 +11,9 @@ void    ft_write(char format, va_list args)
     else if (format == 's')
         ft_putstr(va_arg(args, char*));
     else if (format == 'x')
-        ft_base(va_arg(args, long int), 'x');
+        ft_base(va_arg(args, unsigned int), 'x');
     else if (format == 'X')
-        ft_base(va_arg(args, long int), 'X');
+        ft_base(va_arg(args, unsigned int), 'X');
     else if (format == 'c')
         ft_putchar(va_arg(args, int));
 }
