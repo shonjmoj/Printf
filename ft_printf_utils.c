@@ -28,7 +28,7 @@ void ft_putstr(char* str)
 
 void ft_putnbr(int nb)
 {
-    long long int    n;
+    long int    n;
 
     n = nb;
     if (n < 0)
