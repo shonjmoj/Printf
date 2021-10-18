@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void ft_base(unsigned long int nb, char flag)
+void ft_hex(unsigned long int nb, char flag)
 {
     char* hex;
     char* HEX;
@@ -10,8 +10,8 @@ void ft_base(unsigned long int nb, char flag)
     HEX = "0123456789ABCDEF";
     if (nb >= 16)
     {
-        ft_base(nb / 16, flag);
-        ft_base(nb % 16, flag);
+        ft_hex(nb / 16, flag);
+        ft_hex(nb % 16, flag);
     }
     else if (flag == 'X')
         ft_putchar(HEX[nb]);
@@ -27,7 +27,7 @@ void    write_ptr(unsigned long int nb)
     {
         ft_putchar('0');
         ft_putchar('x');
-        ft_base(nb, 'x');
+        ft_hex(nb, 'x');
     }
 }
 
